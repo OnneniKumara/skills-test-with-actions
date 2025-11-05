@@ -42,7 +42,7 @@ jobs:
           npm install remark-cli remark-preset-lint-consistent vfile-reporter-json
           npx remark . --use remark-preset-lint-consistent --report vfile-reporter-json 2> remark-lint-report.json
 
-      # Upload the remark-lint report as an artifact
+      # Upload the remark-lint report as an artifact.
       - uses: actions/upload-artifact@v5
         with:
           name: remark-lint-report # The name of the artifact in the workflow run
