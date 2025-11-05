@@ -36,8 +36,14 @@ jobs:
       #    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
       #    sudo apt-get install -y nodejs
 
-      # Install remark-cli and preset, then run markdown lint to whole repository contents
+      # Install remark-cli and preset and reporter, then run markdown lint to whole repository contents
       - name: Install and run markdown lint
         run: |
-          npm install remark-cli remark-preset-lint-consistent
-          npx remark . --use remark-preset-lint-consistent
+          npm install remark-cli remark-preset-lint-consistent vfile-reporter-json
+          npx remark . --use remark-preset-lint-consistent --report vfile-reporter-json 2> remark-report.json
+
+      # Upload the remark-lint report as an artifact
+      - uses: actions/upload-artifact@v5
+        with:
+          name: remark-lint-report # The name of the artifact in the workflow run
+          path: remark-lint-report.json # The path to the file to upload
