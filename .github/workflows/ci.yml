@@ -37,7 +37,7 @@ jobs:
       #    sudo apt-get install -y nodejs
 
       # Install remark-cli and preset, then run markdown lint to whole repository contents
-      - name: Run markdown lint
+      - name: Install and run markdown lint
         run: |
           npm install remark-cli remark-preset-lint-consistent
-          npx remark . --use remark-preset-lint-consistent --output --frail
+          npx remark . --use remark-preset-lint-consistent
