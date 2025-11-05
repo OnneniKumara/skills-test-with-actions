@@ -25,6 +25,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v5
 
+      # Set up Node.js environment by GitHub Action
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      # Set up Node.js environment by command line
+      #- name: Set up Node.js
+      #  run: |
+      #    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+      #    sudo apt-get install -y nodejs
+
       # Install remark-cli and preset, then run markdown lint to whole repository contents
       - name: Run markdown lint
         run: |
